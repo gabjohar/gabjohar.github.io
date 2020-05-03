@@ -67,3 +67,12 @@ a {
   text-decoration: none;
 }
 
+div.cat {
+    float: left;
+    margin: 2px;
+}
+
+div p {
+    text-align: center;
+}
+
