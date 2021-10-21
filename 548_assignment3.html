@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>A2/Sensing position</title> 
+        <title>A3/Mechanism and virtual mechanism</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,66 +12,49 @@
     <body> 
 
         <div class="header">
-            <h1>A2: Sensing position</h1>
+            <h1>A3: Mechanism and virtual mechanism</h1>
             <p>
-              <h2>Making the sensor</h2>
-                  <img src="548/A2/inspo.jpg" width=300><img src="548/A2/inspo2.jpg" width=300></a>
-                <p>My inspiration was <a href="https://www.kobakant.at/DIY/?p=5210">the light touch pressure sensor</a> from Kobakant.
+              <h2>Making the mechanism</h2>
+                  <img src="548/A3/A3_making/inspo.png" width=300>
+                <p>My inspiration came from my drying rack and this <a href="https://www.youtube.com/watch?v=Xz60Psx_Cp0&list=PL4GuYp1AV9zcBLc963Q1JACkdmtUBae0S&index=2&ab_channel=MrExpert">video on how to make an hydraulic scissor lift</a>.
                 <p></p>
 
 
                 <div class = "cat">
-                  <img src="548/A2/1_making sensors.jpg" width=400>
-                  <p>I started by cutting out pieces of neoprene and copper fabric, following the Kobakant design.</p>
+                  <img src="548/A3/A3_making/1.scissor lift cardboard.jpg" width=400> <img src="548/A3/A3_making/2. scissor lift complete.jpg" width=400> <img src="548/A3/A3_making/3.sensor.jpg" width=400> <img src="548/A3/A3_making/4.scissor lift with sensor.jpg" width=400> <img src="548/A3/A3_making/5.scissor lift and sensor.jpg" width=400> 
+                  <p>Making the scissor lift was pretty straightforward. I cut 8 strips of cardboard and connected them with paper pins and cut paper straws. Then I sowed my sensor (which changed the resistance significantly! My range went from 0-1023 to ~800-1023). I had two main issues with this assignment and the first was figuring out how to instrument my mechanism with the sensor. I ended up making a little spring out of cardboard and placing the sensor and the bottom pole of the lift. Actuating the mechanism would then result in pressure changes on the sensor.</p>
                      <p></p>
 
-            <div class = "cat">
-                  <img src="548/A2/3_soldering2.jpg" width=400><img src="548/A2/4_soldering3.jpg" width=400>  
-                <p>Then I soldered the wire onto the fabric (being very careful as it's easy to burn the copper fabric and just have a hot mess of solder and melted copper).</p>
-                   <p></p>
-
-                  <div class = "cat">
-                  <img src="548/A2/5_testing connections.jpg" width=400>
-                <p>Testing the connections.</p>
-                   <p></p>
-
-                  <div class = "cat">
-                  <img src="548/A2/6_insulating.jpg" width=400>
-                <p>I insulated with hot glue which, in retrospect, what not the best design decision. But it worked.</p>
-                   <p></p>
 
                 <div class = "cat">
-                  <img src="548/A2/7_layering 2.jpg" width=400><img src="548/A2/8_layering.jpg" width=400>
-                <p>I layered it with velostat.</p>
-                   <p></p>
+                  <p>Testing the sensor in Arduino.</p>
+                     <p></p>
 
-                <div class = "cat">
-                  <img src="548/A2/9_full circuit.jpg" width=400>
-                <p>Making the circuit and getting a sensor reading!</p>
-                   <p></p>
-
-                <video width="400" controls>
-                <source src="548/A2/10_getting a sensor reading.mp4" type="video/mp4">
+            <video width="400" controls>
+                <source src="548/A3/A3_making/testing serial plotter.mp4" type="video/mp4">
                   </video>
+                       <p></p>
+
 
                    <p></p>
 
                 <div class="header">
-                <h2>Arduino talks to Grasshopper using Firefly</h2>
-                <p>I installed Firefly following their <a href="https://static1.squarespace.com/static/538d231ce4b05e956a288ede/t/539e3f6de4b06c9050b17f8e/1402879853478/110920_Firefly_Users_Guide.pdf">user's guide</a>. It was slightly outdated but more or less told me what I needed to know.
+                <h2>Making a virtual mechanism</h2>
+                <img src="548/A3/A3_rhino/1.initial design.png" width=400> <img src="548/A3/A3_rhino/2.initial design ghost.png" width=400> <img src="548/A3/A3_rhino/3.too many curves.png" width=400> <img src="548/A3/A3_rhino/4.not snapping.png" width=400> <img src="548/A3/A3_rhino/5.initial design one curve.png" width=400> 
+                <p>This is the part of the assignment that didn't go so well, i.e. the "second issue." I basically couldn't get my shapes to move the way I wanted, despite following Nadya's instructions on how to use Kangaroo. The <code>coincident</code> component did not make the starting points of my curves coincide, so there was no constrain. At the same time, they seemed overly constrained by the fact that I initally input the start of my six curves (3 for each shape) as part of my <code>GoalObjects</code>. I tried three different configurations of shapes and curves but it still did not work.
                 <p></p>
 
                 <div class = "cat">
-                  <img src="548/A2/11_talking to arduino.png" width=500><img src="548/A2/12_figuring out triggr.png" width=500>
-                  <p>I had some issues with the GH_Timer (now Trigger) and then realized that I needed to update to the latest version of Rhino.</p>
+                  <img src="548/A3/A3_rhino/6.second attempt 2.png" width=400> <img src="548/A3/A3_rhino/7.second attempt.png" width=400> <img src="548/A3/A3_rhino/8.second attempt 3.png" width=400> 
+                  <p>I retraced my steps and ended up starting over completely, thinking that maybe the ways the shapes were lined up mattered but the simulation still wasn't behaving the way I expected.</p>
                      <p></p>
 
             <div class = "cat">
-                  <p>In the end though, the installation wasn't so bad. Firefly works pretty well!</p>
+                  <p>In the end I used the same visualization as last time.</p>
                      <p></p>
 
             <video width="400" controls>
-                <source src="548/A2/13_final video.mp4" type="video/mp4">
+                <source src="548/A3/A3_making/ze final result.mp4" type="video/mp4">
                   </video>
 
                    <p></p>
