@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>A5/Milling PCBs</title> 
+        <title>A6/Designing PCB</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,26 +12,57 @@
     <body> 
 
         <div class="header">
-            <h1>A5: Making PCB: A Tale of Failure, Woe and Learning</h1>
+            <h1>A6: Designing PCB - Small and big traces</h1>
             <p>
-              <h2>Failing and learning</h2>
-                <p>This is a story of how I started with the plan of milling a simple circuit and somehow ended up messing up, losing it, feeling discouraged and incompetent, forgetting to document, milling 6 more and messing that up too, and learning a lot in the process. </p>
+              <h2>From circuit design to programming</h2>
+                <p>For this assignment we had to 1)design our own PCB, 2) surface mount solder it and 3) program it. That last step didn't work for  me but I got plenty of practice in steps 1 and 2. Here are a few stats on this assignment:</p>
 
-                 <p> It all started here: We were in class last Thursday, designing a simple circuit together. It was going well. "I got this!" I thought. "I'll  mill it later and solder the tiny parts tomorrow." Little did I know that this simple plan wouldn't turn out as expected.</p>
+                 <p> 1. Milled PCBs: 4</p>
+                 <p> 2. Soldered PCBs: 3</p>
+                 <p> 3. Soldering injuries: 2</p>
+                 <p> 4. Soldering time: From 2h to 30 min</p>
+                 <p> 5. Programmed PCBs: 0</p>
 
-                <h2>First round: failed and undocumented</h2>
-                <p> I do not even have pictures for the first board I milled. I did it on Thursday afternoon, and kept the machine settings that Blair and Danli had used before me. It went well. Nadya later told me that my edges were too far from my ground and power pads, which I fixed in the next design.</p>
+                <h2>First round</h2>
 
-                <p>The next day, after group meeting and electronics sorting, I soldered my SM parts to the board. I did a poor job, and perhaps fried the LED. I was so disappointed with myself at that point that I forgot to document the whole thing. I think I also had a confused understanding of what we needed to deliver on that week, a confusion that probably partially stemmed from  my feeling of failure. Worst of all, I ended up losing the PCB (in my bag? in Sieg 4th floor? in the lab?) and therefore all tracecs of that early work.</p>
+                <p> I slightly adapted Nadya's original design by adding a connector for my sensor and a resistor. One thing I forgot to do that would have made my life easier is making the traces and pads bigger. But I decided to keep them small and see what happens (spoiler: small traces break more easily, especially if you're new at SM soldering.)</p>
+
+                <img src="548/A6/schematic.png" width=400> <img src="548/A6/pcb.png" width=400> 
+
+                <p>Once the design was validated, I got ready for milling. Based on my learnings from <a href="https://gabjohar.github.io/548_assignment5.html">A5</a>, I made sure all my offset measurements (material and plan) were correct. I milled two PCBs, anticipating potential setbacks during the soldering phase.</p>
+
+                <img src="548/A6/2.jpg" width=400> <img src="548/A6/1.jpg" width=400> <img src="548/A6/images/3.jpg" width=400> <img src="548/A6/4.jpg" width=400> <img src="548/A6/5.jpg" width=400>
+
+                <p>The results.</p>
+
+                <img src="548/A6/6.jpg" width=400> <img src="548/A6/8.jpg" width=400>
+
+                <p>Now getting ready for soldering!</p>
+
+                <img src="548/A6/9.jpg" width=400> <img src="548/A6/11.jpg" width=400> <img src="548/A6/10.jpg" width=400>
+
+                <p>Soldering in progress and final result.</p>
+
+                <img src="548/A6/12.jpg" width=400><img src="548/A6/13.jpg" width=400>
+
+                <p>Testing.</p>
+
+                <img src="548/A6/15.jpg" width=400>
+
+                <p>I thank Danli and Blair for helping me out with the programming part! Danli offered to help with Arduino-as-programming-board setup and Blair pointed me towards the <a href="http://highlowtech.org/?p=1695">High Low Tech resource page on how to do AVR programming with the Arduino IDE.</a> Despite being a good tutorial, it didn't work out because my circuit wasn't sound.</p>
+
+                <img src="548/A6/15-1.png" width=400>
+
+                <p>So back to the soldering station!</p>
 
 
-                <h2>Second round: failed and documented</h2>
+                <h2>Second round</h2>
                 <div class = "cat">
-                 <img src="548/A5/images/1. loading material.jpg" width=400> <img src="548/A5/images/2. installing endmill 2.jpg" width=400> <img src="548/A5/images/3. ready to go.jpg" width=400>
-                  <p>On Sunday I went to the MILL and milled new boards. I milled 6 because I figured I might need some practice with SM soldering. First step was loading the files, the material, installing the endmill, and adjusting the machine settings.</p>
+                 <img src="548/A6/16.jpg" width=400> <img src="548/A6/17.jpg" width=400>
+                  <p>I soldered my other board but it also had problems.</p>
                      <p></p>
 
-                    <p>An important thing that happened is that the material offset was off, because I somehow read the Z material offset as being the XY material offset. When it was time to mill, I was surprised to see the endmill move in the air, about 5 mm about my board (eye roll). I didn't even realize that that was the issue until the next day, Monday, when I set up the lab's Othermill at home and the same thing happened.It's embarassing to admit but here it is. I read too fast, or wasn't paying attention, and ended up with weirdly milled boards because I was eyeballing the distance between the endmill and the board and manually inputing it via placement offset.</p>
+              <img src="548/A6/17.jpg" width=400>
 
 
                 <div class = "cat">
