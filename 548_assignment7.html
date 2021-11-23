@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>A6/Designing PCB</title> 
+        <title>A7/Drive Trains</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,80 +12,98 @@
     <body> 
 
         <div class="header">
-            <h1>A6: Designing PCB - Small and big traces</h1>
+            <h1>A7: Drive Trains</h1>
             <p>
-              <h2>From circuit design to programming</h2>
-                <p>For this assignment we had to 1)design our own PCB, 2) surface mount solder it and 3) program it. That last step didn't work for  me but I got plenty of practice in steps 1 and 2. Here are a few stats on this assignment:</p>
+              <h2>Inspiration</h2>
+                <p>For this assignment we had to 1) design our own PCB and program it to control a motor, 2) build a drive train mechanism and, 3) actuate it with our motor controlled by PCB. As Nadya would say: lots of systems integration! </p>
 
-                 <p> 1. Milled PCBs: 4</p>
-                 <p> 2. Soldered PCBs: 3</p>
-                 <p> 3. Soldering injuries: 2</p>
-                 <p> 4. Soldering time: From 2h to 30 min</p>
-                 <p> 5. Programmed PCBs: 0</p>
+                <img src="548/A7/design/gerbil.jpeg" width=400> <img src="548/A7/design/IMG_6105.jpg" width=400> 
 
-                <h2>First round</h2>
-
-                <p> I slightly adapted Nadya's original design by adding a connector for my sensor and a resistor. One thing I forgot to do that would have made my life easier is making the traces and pads bigger. But I decided to keep them small and see what happens (spoiler: small traces break more easily, especially if you're new at SM soldering.)</p>
-
-                <img src="548/A6/schematic.png" width=400> <img src="548/A6/pcb.png" width=400> 
-
-                <p>Once the design was validated, I got ready for milling. Based on my learnings from <a href="https://gabjohar.github.io/548_assignment5.html">A5</a>, I made sure all my offset measurements (material and plan) were correct. I milled two PCBs, anticipating potential setbacks during the soldering phase.</p>
-
-                <img src="548/A6/2.jpg" width=400> <img src="548/A6/1.jpg" width=400> <img src="548/A6/images/3.jpg" width=400> <img src="548/A6/4.jpg" width=400> <img src="548/A6/5.jpg" width=400>
-
-                <p>The results.</p>
-
-                <img src="548/A6/6.jpg" width=400> <img src="548/A6/8.jpg" width=400>
-
-                <p>Now getting ready for soldering!</p>
-
-                <img src="548/A6/9.jpg" width=400> <img src="548/A6/11.jpg" width=400> <img src="548/A6/10.jpg" width=400>
-
-                <p>Soldering in progress and final result.</p>
-
-                <img src="548/A6/12.jpg" width=400><img src="548/A6/13.jpg" width=400>
-
-                <p>Testing.</p>
-
-                <img src="548/A6/15.jpg" width=400>
-
-                <p>I thank Danli and Blair for helping me out with the programming part! Danli offered to help with Arduino-as-programming-board setup and Blair pointed me towards the <a href="http://highlowtech.org/?p=1695">High Low Tech resource page on how to do AVR programming with the Arduino IDE.</a> Despite being a good tutorial, it didn't work out because my circuit wasn't sound.</p>
-
-                <img src="548/A6/15-1.png" width=400>
-
-                <p>So back to the soldering station!</p>
+                <p>My inspiration for this assignment was <a href="https://youtu.be/xiVpxohPdIA"> Gerbil the jumping robot</a>, which uses a rack and pinion mechanism with a continuous servo to create Gerbil's jumping motion. It seemed a tad too complex for my first drive train ever so I decided to go for a simplfied version of it inspired by the <a href="http://www.papermech.net/"> Papermech project</a>.</p>
 
 
-                <h2>Second round</h2>
-                <div class = "cat">
-                 <img src="548/A6/16.jpg" width=400> <img src="548/A6/17.jpg" width=400>
-                  <p>I soldered my other board but it also had problems --most notablythe GND of my microcontroller not being connected to anything :)</p>
-                     <p></p>
+                <h2>Schematic + machine design</h2>
 
-              <img src="548/A6/drama.png" width=400>
+                <p> I spent wayyyy too much time on the schematic given how similar it was from last week's. This is the final version but it went through too many useless iterations (including one without aprogrammer connector.)</p>
 
-              <p>So back to the design table!</p>
+                <img src="548/A7/schematic/schematic.png" width=400> <img src="548/A7/schematic/latest servo pcb.png" width=400>
+
+                <p>The design was, again, adapated from Papermech's rack and pinion 2 mechanism.</p>
+
+                <img src="548/A7/design/rack n pinion rhino.png" width=400> <img src="548/A7/design/svg design.png" width=400>
+
+                <p>Then on to milling and laser cutting.</p>
+
+                <img src="548/A7/milling and  laser cutting/IMG_6075.jpg" width=400> <img src="548/A7/milling and  laser cutting/IMG_6078.jpg" width=400> <img src="548/A7/milling and  laser cutting/IMG_6079.jpg" width=400>
+
+                <p>Laser cut parts, bagged for safe transport.</p>
+
+                <img src="548/A7/milling and  laser cutting/IMG_6108.jpg" width=400>
 
 
-                <h2>Third round</h2>
-                <div class = "cat">
-                <p>I remilled the new PCB after making the adjusments in kicad (also needed a 10k resistor between GND and pin 12). I went back to the MILL and went through the same process. As Danli pointed out though, the double sided tape had lost stickiness (?) and when the time came to cut the outline of circuit, the speed of the endmill sent the copper board flying inside the desktop CNC mill. Still totally solderable though.<p>
+                <h2>Soldering</h2>
+
+                <p>I'm getting much better at SM soldering! Long story short, the first circuit connected with the programmer right away but I realized that my tiny44 was upside down, so it couldn't be programmed. I tried to desolder that component but ripped a few traces in the process so ended up resoldering a new one.</p>
+
+                <img src="548/A7/soldering/IMG_6122.jpg" width=400> <img src="548/A7/soldering/IMG_6125.jpg" width=400> <img src="548/A7/soldering/IMG_6126.jpg" width=400>
+
                 <p></p>
+
+                <h2>Programming</h2>
+                <div class = "cat">
+                <p>I started to check if I could control a servo with my sensor, just using Arduino. That worked.</p>
+                <img src="548/A7/sensor control/sensor control.gif" width=400>
+
+                <p>But then programming the PCB turned out challenging because even though programs would upload to my board (such as the Blink for Attiny44), I wasn't able to move my servo.</p>
+
+                <img src="548/A7/programming 4/blinking.jpg" width=400> <img src="548/A7/programming 4/blinking and talking.jpg" width=400> <img src="548/A7/programming 4/blinking and talking with arduino.jpg" width=400> 
+
+                <p>Not moving :(</p>
+
+                <img src="548/A7/programming 4/not talking.jpg" width=400> <img src="548/A7/programming 4/code uploaded, no servo motion.png" width=400>
+
+                <p>My code.</p>
+
+                <img src="548/A7/programming 4/servo_cntrl.png" width=600>
+
+              <p>Danli and Blair helped me troubleshoot and we checked the connections, the code... eventually the programmer even stopped responding, out of the blue.</p>
+
+              <img src="548/A7/programming 4/programmer no longer conneced.png" width=400>
+
+              <p></p>
+
+
+                <h2>Mechanism<h2>
+                <div class = "cat">
+                <p>The mechanism started great but ended up in a could-really-be-improved place.</p>
+
+                <img src="548/A7/programming 4/programmer no longer conneced.png" width=400>
 
                 <video width="400" controls>
-                <source src="548/A6/20-1.MOV" type="video/MOV">
+                <source src="548/A7/mechanism/early tests.mp4" type="video/mp4">
+                </video>
 
                 <p></p>
-                <img src="548/A6/18.jpg" width=400>
+                <img src="548/A7/mechanism/IMG_6170.jpg" width=400> <img src="548/A7/mechanism/IMG_6158.jpg" width=400> 
 
-                <p>Unfortunately, that board also didn't work, and I think it's because I might have melted a few traces in the process of soldering.</p>
+                <p>The material of the pinion is not optimal and scrapes, rather than grabs, the rack. The rack also moves too much, something that an extra sleeve might be able to fix.</p>
 
-                <img src="548/A6/20-1.png" width=400>
+                <video width="400" controls>
+                <source src="548/A7/mechanism/learning to control servo.mp4" type="video/mp4">
+                </video>
+
+                <p>Even though it's not controlled by my PCB, I wanted to see what happened when I uploaded my code to an Arduino, and if it made the servo move the way I wanted.</p>
+
+                <img src="racknpinion.gif" width=400> 
+
+                <p>It did.</p>
+
+                <p></p>
 
 
                 <h2>Next steps</h2>
 
-                <p>Debugging the circuit, possibly remilling and resoldering.</p>
+                <p>Debugging the circuit and improving the mechanism by using a different material (maybe a different cardboard, like e-flute instead of c-flute).</p>
 
 
 
