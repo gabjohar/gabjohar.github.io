@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>A6/Designing PCB</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>A6: Designing PCB - Small and big traces</h1>
+            <p>
+              <h2>From circuit design to programming</h2>
+                <p>For this assignment we had to 1)design our own PCB, 2) surface mount solder it and 3) program it. That last step didn't work for  me but I got plenty of practice in steps 1 and 2. Here are a few stats on this assignment:</p>
+
+                 <p> 1. Milled PCBs: 4</p>
+                 <p> 2. Soldered PCBs: 3</p>
+                 <p> 3. Soldering injuries: 2</p>
+                 <p> 4. Soldering time: From 2h to 30 min</p>
+                 <p> 5. Programmed PCBs: 0</p>
+
+                <h2>First round</h2>
+
+                <p> I slightly adapted Nadya's original design by adding a connector for my sensor and a resistor. One thing I forgot to do that would have made my life easier is making the traces and pads bigger. But I decided to keep them small and see what happens (spoiler: small traces break more easily, especially if you're new at SM soldering.)</p>
+
+                <img src="548/A6/schematic.png" width=400> <img src="548/A6/pcb.png" width=400> 
+
+                <p>Once the design was validated, I got ready for milling. Based on my learnings from <a href="https://gabjohar.github.io/548_assignment5.html">A5</a>, I made sure all my offset measurements (material and plan) were correct. I milled two PCBs, anticipating potential setbacks during the soldering phase.</p>
+
+                <img src="548/A6/2.jpg" width=400> <img src="548/A6/1.jpg" width=400> <img src="548/A6/images/3.jpg" width=400> <img src="548/A6/4.jpg" width=400> <img src="548/A6/5.jpg" width=400>
+
+                <p>The results.</p>
+
+                <img src="548/A6/6.jpg" width=400> <img src="548/A6/8.jpg" width=400>
+
+                <p>Now getting ready for soldering!</p>
+
+                <img src="548/A6/9.jpg" width=400> <img src="548/A6/11.jpg" width=400> <img src="548/A6/10.jpg" width=400>
+
+                <p>Soldering in progress and final result.</p>
+
+                <img src="548/A6/12.jpg" width=400><img src="548/A6/13.jpg" width=400>
+
+                <p>Testing.</p>
+
+                <img src="548/A6/15.jpg" width=400>
+
+                <p>I thank Danli and Blair for helping me out with the programming part! Danli offered to help with Arduino-as-programming-board setup and Blair pointed me towards the <a href="http://highlowtech.org/?p=1695">High Low Tech resource page on how to do AVR programming with the Arduino IDE.</a> Despite being a good tutorial, it didn't work out because my circuit wasn't sound.</p>
+
+                <img src="548/A6/15-1.png" width=400>
+
+                <p>So back to the soldering station!</p>
+
+
+                <h2>Second round</h2>
+                <div class = "cat">
+                 <img src="548/A6/16.jpg" width=400> <img src="548/A6/17.jpg" width=400>
+                  <p>I soldered my other board but it also had problems --most notablythe GND of my microcontroller not being connected to anything :)</p>
+                     <p></p>
+
+              <img src="548/A6/drama.png" width=400>
+
+              <p>So back to the design table!</p>
+
+
+                <h2>Third round</h2>
+                <div class = "cat">
+                <p>I remilled the new PCB after making the adjusments in kicad (also needed a 10k resistor between GND and pin 12). I went back to the MILL and went through the same process. As Danli pointed out though, the double sided tape had lost stickiness (?) and when the time came to cut the outline of circuit, the speed of the endmill sent the copper board flying inside the desktop CNC mill. Still totally solderable though.<p>
+                <p></p>
+
+                <video width="400" controls>
+                <source src="548/A6/20-1.MOV" type="video/MOV">
+
+                <p></p>
+                <img src="548/A6/18.jpg" width=400>
+
+                <p>Unfortunately, that board also didn't work, and I think it's because I might have melted a few traces in the process of soldering.</p>
+
+                <img src="548/A6/20-1.png" width=400>
+
+
+                <h2>Next steps</h2>
+
+                <p>Debugging the circuit, possibly remilling and resoldering.</p>
+
+
+
+        </div>
+        
+    </body>
+</html>
