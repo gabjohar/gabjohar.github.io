@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>A5/Milling PCBs</title> 
+        <title>A8/Serial communication</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,61 +12,68 @@
     <body> 
 
         <div class="header">
-            <h1>A5: Making PCB: A Tale of Failure, Woe and Learning</h1>
+            <h1>A8: Serial communication or the Orange Blinking Light Saga</h1>
+
+            <p><strong>TL;DR</strong> my board had trouble connecting to the programmer and it took me 8 hours to figure it out. Complete saga below.</p>
             <p>
-              <h2>Failing and learning</h2>
-                <p>This is a story of how I started with the plan of milling a simple circuit and somehow ended up messing up, losing it, feeling discouraged and incompetent, forgetting to document, milling 6 more and messing that up too, and learning a lot in the process. </p>
+              <h2>Board design</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/11. schematic.pgn" width=800> <img src="548/A8/images/22. pcb.png" width=800> 
+                <p>We all used Nadya's board design as a starting point. I added an LED for my output. A novelty for this board was that it was double sided; we all used the other side of the board to connect the GND.</p>
 
-                 <p> It all started here: We were in class last Thursday, designing a simple circuit together. It was going well. "I got this!" I thought. "I'll  mill it later and solder the tiny parts tomorrow." Little did I know that this simple plan wouldn't turn out as expected.</p>
-
-                <h2>First round: failed and undocumented</h2>
-                <p> I do not even have pictures for the first board I milled. I did it on Thursday afternoon, and kept the machine settings that Blair and Danli had used before me. It went well. Nadya later told me that my edges were too far from my ground and power pads, which I fixed in the next design.</p>
-
-                <p>The next day, after group meeting and electronics sorting, I soldered my SM parts to the board. I did a poor job, and perhaps fried the LED. I was so disappointed with myself at that point that I forgot to document the whole thing. I think I also had a confused understanding of what we needed to deliver on that week, a confusion that probably partially stemmed from  my feeling of failure. Worst of all, I ended up losing the PCB (in my bag? in Sieg 4th floor? in the lab?) and therefore all tracecs of that early work.</p>
-
-
-                <h2>Second round: failed and documented</h2>
-                <div class = "cat">
-                 <img src="548/A5/images/1. loading material.jpg" width=400> <img src="548/A5/images/2. installing endmill 2.jpg" width=400> <img src="548/A5/images/3. ready to go.jpg" width=400>
-                  <p>On Sunday I went to the MILL and milled new boards. I milled 6 because I figured I might need some practice with SM soldering. First step was loading the files, the material, installing the endmill, and adjusting the machine settings.</p>
-                     <p></p>
-
-                    <p>An important thing that happened is that the material offset was off, because I somehow read the Z material offset as being the XY material offset. When it was time to mill, I was surprised to see the endmill move in the air, about 5 mm about my board (eye roll). I didn't even realize that that was the issue until the next day, Monday, when I set up the lab's Othermill at home and the same thing happened.It's embarassing to admit but here it is. I read too fast, or wasn't paying attention, and ended up with weirdly milled boards because I was eyeballing the distance between the endmill and the board and manually inputing it via placement offset.</p>
+                <h2>Milling and SM soldering</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/3. boards.jpg" width=700> <img src="548/A8/images/4. board closeup.jpg" width=700> 
+                <p>The one part of the assignment when I felt truly confident.</p>
 
 
-                <div class = "cat">
-                 <img src="548/A5/images/7. final result.jpg" width=400> <img src="548/A5/images/6. lost pieces.jpg" width=600>
-                <p>Another "funny" thing that happened was that while I was vacuuming I accidentally vacuumed two mini boards, ending up with 4 boards instead of 6.<p>
-                <p></p>
+                <h2>Serial communication</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/5. error 2.png" width=700> 
+                <p>This is when the trouble began. At first, when I connected my board to the computer with the serial cable I got a green light from the programmer, which always feels good. I then set the fuses of the at44 using <strong>avrdude</strong> (thanks Blair for helping me with the install!). That worked well. I made sure the board settings in the Arduino IDE were right (board, processor, clock, programmer) and uploaded Nadya's echo sketch. I got the following error: </p> 
 
-                <div class = "cat">
-                  <img src="548/A5/images/9. soldering and batteries.jpg" width=400> <img src="548/A5/images/8. soldering setup.jpg" width=600> <img src="548/A5/images/first fitting 2.jpg" width=600>
-                  <p>The next part was the actual soldering. I watched <a href="https://youtu.be/f9fbqks3BS8">this tutorial</a> and it helped a lot in better understanding what needed to happen. It seems obvious when you know it, but isn't so when all you've done is big pieces soldering.</p>
-                     <p></p>
+              <img src="548/A8/images/error 1.pgn" width=800> 
 
-            <div class = "cat">
-                <img src="548/A5/images/10. soldering closeup.jpg" width=400> <img src="548/A5/images/11. soldering closeup 2.jpg" width=400> <img src="548/A5/images/14. soldering fried board.jpg" width=400>
-                  <p>Not a great soldering job...</p>
-                     <p></p>
+                <p>The first thing I did was check all my connections, especially between the programmer and the at44. Everything looked good. I plugged in the programmer in reverse and got the same message. I then went online, looked for possible causes. </p>
 
-            <div class = "cat">
-                <img src="548/A5/images/12. testing failure.jpg" width=600> 
-                  <p>And it didn't work... My guess is because the solder is not just on the pad but gets onto the rest of the board?</p>
-                     <p></p>
+                <img src="548/A8/images/6. SPI bus busy.png" width=800> 
 
+                <p>One of them was that something on the SPI bus might interfere with the communication with the chip. I felt that was unlikely, but perhaps this is explains why we need to disconnect the programmer once we've uploaded our code if we want serial to work (as Blair discovered).</p>
 
-                <h2>So what did I learn?</h2>
+                <img src="548/A8/images/7. not good power.png" width=800> 
 
-                <p>That the Z offset is in fact the <strong>Z</strong> offset, not the XY offset. It somehow wasn't clear enough or I wasn't paying enough attention. </p>
+                <p>Another theory was that I wasn't <a href="https://forum.arduino.cc/t/trouble-installing-bootloader/346640">getting good power.</a> My programmer was also blnking orange constantly at that point, which corroborated the power issue, per <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42093-AVR-ISP-mkII_UserGuide.pdf"> Atmel's AVRISP mkII documentation.</a></p>
 
-                 <p>That even when you fail, you need to document (perhaps especially when you fail). </p>
+                <img src="548/A8/images/8. blinking orange.png" width=700> 
 
-                  <p>That sometimes fatigue and discouragement get in the way; to recognize that they do and work with that knowledge.</p>
+                <p>So maybe it was my connectors that weren't making good contact. Back to the soldering station!</p>
+
+                <img src="548/A8/images/9. surgery.jpg" width=700>
+
+                <p>It definitely helped because when I plugged in the programmer again the light went green! Hooray! Tiny progress.</p>
 
 
-                <img src="soldering goals.gif" width=600> 
-                <p>#SolderingGoals</p>
+                <img src="548/A8/images/10.green light!.jpg" width=700>
 
+
+                <p>And while the sketch still wouldn't upload, avrdude was no longer complaining.</p>
+
+                <img src="548/A8/images/11. avr dude not complaining.png" width=800> <img src="548/A8/images/12. diff error message.png" width=800> 
+
+                <p>But still, something was up with the connection. Perhaps <a href="https://stackoverflow.com/questions/15313269/avrispmkii-connection-status-unknown-status-0x00"> even the clock?.</a> I messed with that a bit using avrdude, with no success. I also added tape to my board and strenghtened a few more connections, in case that might helped with power supply.</p>
+
+                <img src="548/A8/images/13. tape and wire.jpg" width=700> <img src="548/A8/images/14. new error.png" width=700>
+
+                <p>Ultimately, hours later, I found this <a href="https://www.ladyada.net/learn/avr/avrdude.html"> really great AVR tutorial.</a>  I think my problem is that my board isn't properly connected to the chip.</p>
+
+                <img src="548/A8/images/16. programmer not properly connected to the chip.png" width=800>
+
+
+                <h2>Next steps</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/17. next steps.jpg" width=700> <img src="548/A8/images/18.next steps.jpg" width=700>  
+                <p>So tomorrow, I'll mill another board while I mill the one for my final project and try again with thicker traces and more clearance to make sure I have solid connections.</p> 
+    
 
         </div>
         
