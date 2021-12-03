@@ -12,9 +12,9 @@
     <body> 
 
         <div class="header">
-            <h1>A8: Serial communication or the Orange Blinking Light Saga</h1>
+            <h1>A8: Serial communication or the Blinking Orange Light Saga</h1>
 
-            <p><strong>TL;DR</strong> my board had trouble connecting to the programmer and it took me 8 hours to figure it out. Complete saga below.</p>
+            <p><strong>TL;DR</strong> my board had trouble connecting to the programmer and it took me 7 hours to figure it out. Complete saga below.</p>
             <p>
               <h2>Board design</h2>
               <div class = "cat">
@@ -40,8 +40,6 @@
 
                 <p>One of them was that something on the SPI bus might interfere with the communication with the chip. I felt that was unlikely, but perhaps this is explains why we need to disconnect the programmer once we've uploaded our code if we want serial to work (as Blair discovered).</p>
 
-                <img src="548/A8/images/7. not good power.png" width=800> 
-
                 <p>Another theory was that I wasn't <a href="https://forum.arduino.cc/t/trouble-installing-bootloader/346640">getting good power.</a> My programmer was also blnking orange constantly at that point, which corroborated the power issue, per <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42093-AVR-ISP-mkII_UserGuide.pdf"> Atmel's AVRISP mkII documentation.</a></p>
 
                 <img src="548/A8/images/8. blinking orange.png" width=800> 
@@ -50,7 +48,7 @@
 
                 <img src="548/A8/images/9. surgery.jpg" width=700>
 
-                <p>It definitely helped because when I plugged in the programmer again the light went green! Hooray! Tiny progress.</p>
+                <p>The intervention definitely helped because when I plugged in the programmer again the light went green! Hooray! Tiny progress.</p>
 
 
                 <img src="548/A8/images/10.green light!.jpg" width=700>
@@ -62,7 +60,7 @@
 
                 <p>But still, something was up with the connection. Perhaps <a href="https://stackoverflow.com/questions/15313269/avrispmkii-connection-status-unknown-status-0x00"> even the clock?.</a> I messed with that a bit using avrdude, with no success. I also added tape to my board and strenghtened a few more connections, in case that might helped with power supply.</p>
 
-                <img src="548/A8/images/13. tape and wire.jpg" width=700> <img src="548/A8/images/14. new error.png" width=800>
+                <img src="548/A8/images/13. tape and wire.jpg" width=700> <img src="548/A8/images/14. new error.png" width=900>
 
                 <p>Ultimately, hours later, I found this <a href="https://www.ladyada.net/learn/avr/avrdude.html"> really great AVR tutorial.</a>  I think my problem is that my board isn't properly connected to the chip.</p>
 
@@ -71,7 +69,7 @@
 
                 <h2>Next steps</h2>
               <div class = "cat">
-                 <img src="548/A8/images/17. next steps.jpg" width=700> <img src="548/A8/images/18.next steps.jpg" width=800>  
+                 <img src="548/A8/images/17. next steps.jpg" width=600> <img src="548/A8/images/18.next steps.jpg" width=600>  
                 <p>So tomorrow, I'll mill another board while I mill the one for my final project and try again with thicker traces and more clearance to make sure I have solid connections.</p> 
     
 
