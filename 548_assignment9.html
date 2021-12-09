@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>A8/Serial communication</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <h1>A8: Serial communication or the Blinking Orange Light Saga</h1>
+
+            <p><strong>TL;DR</strong> my board had trouble connecting to the programmer and it took me 7 hours to figure it out. Complete saga below.</p>
+            <p>
+              <h2>Board design</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/1. schematic.png" width=800> <img src="548/A8/images/2. pcb.png" width=800> 
+                <p>We all used Nadya's board design as a starting point. I added an LED for my output. A novelty for this board was that it was double sided; we all used the other side of the board to connect the GND.</p>
+
+                <h2>Milling and SM soldering</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/3. boards.jpg" width=700> <img src="548/A8/images/4. board closeup.jpg" width=700> 
+                <p>The one part of the assignment when I felt truly confident.</p>
+
+
+                <h2>Serial communication</h2>
+              <div class = "cat">
+                <p>This is when the trouble began. At first, when I connected my board to the computer with the serial cable I got a green light from the programmer, which always feels good. I then set the fuses of the at44 using <strong>avrdude</strong> (thanks Blair for helping me with the install!). That worked well. I made sure the board settings in the Arduino IDE were right (board, processor, clock, programmer) and uploaded Nadya's echo sketch. I got the following error: </p> 
+
+              <img src="548/A8/images/error 1.png" width=800> 
+
+                <p>The first thing I did was check all my connections, especially between the programmer and the at44. Everything looked good. I plugged in the programmer in reverse and got the same message. I then went online, looked for possible causes. </p>
+
+                <img src="548/A8/images/6. SPI bus busy.png" width=800> 
+
+                <p>One of them was that something on the SPI bus might interfere with the communication with the chip. I felt that was unlikely, but perhaps this is explains why we need to disconnect the programmer once we've uploaded our code if we want serial to work (as Blair discovered).</p>
+
+                <p>Another theory was that I wasn't <a href="https://forum.arduino.cc/t/trouble-installing-bootloader/346640">getting good power.</a> My programmer was also blnking orange constantly at that point, which corroborated the power issue, per <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42093-AVR-ISP-mkII_UserGuide.pdf"> Atmel's AVRISP mkII documentation.</a></p>
+
+                <img src="548/A8/images/8. blinking orange.png" width=800> 
+
+                <p>So maybe it was my connectors that weren't making good contact. Back to the soldering station!</p>
+
+                <img src="548/A8/images/9. surgery.jpg" width=700>
+
+                <p>The intervention definitely helped because when I plugged in the programmer again the light went green! Hooray! Tiny progress.</p>
+
+
+                <img src="548/A8/images/10.green light!.jpg" width=700>
+
+
+                <p>And while the sketch still wouldn't upload, AVR was no longer complaining.</p>
+
+                <img src="548/A8/images/11. avr dude not complaining.png" width=900> <img src="548/A8/images/12. diff error message.png" width=800> 
+
+                <p>But still, something was up with the connection. Perhaps <a href="https://stackoverflow.com/questions/15313269/avrispmkii-connection-status-unknown-status-0x00"> even the clock?.</a> I messed with that a bit using avrdude, with no success. I also added tape to my board and strenghtened a few more connections, in case that might helped with power supply.</p>
+
+                <img src="548/A8/images/13. tape and wire.jpg" width=700> <img src="548/A8/images/14. new error.png" width=900>
+
+                <p>Ultimately, hours later, I found this <a href="https://www.ladyada.net/learn/avr/avrdude.html"> really great AVR tutorial.</a>  I think my problem is that my board isn't properly connected to the chip.</p>
+
+                <img src="548/A8/images/16. programmer not properly connected to the chip.png" width=800>
+
+
+                <h2>Next steps</h2>
+              <div class = "cat">
+                 <img src="548/A8/images/17. next steps.jpg" width=600> <img src="548/A8/images/18.next steps.jpg" width=600>  
+                <p>So tomorrow, I'll mill another board while I mill the one for my final project and try again with thicker traces and more clearance to make sure I have solid connections.</p> 
+    
+
+        </div>
+        
+    </body>
+</html>
